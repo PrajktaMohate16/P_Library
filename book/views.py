@@ -2,6 +2,8 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render,redirect
 from book.models import Book
 import traceback
+from django.contrib.auth import login,logout,authenticate
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -216,3 +218,11 @@ def restore_data(request,id):
 def product_video(request):
     print("In product video")
     return HttpResponse("Here you can see product video")
+    
+def user_login(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username,password)
+    if user:
+        login(request,user)
+        return HttpResponse("Successfully logged in .....!")
