@@ -1,0 +1,61 @@
+<!-- Show all created books -->
+
+<html>
+    <head>
+        <title>All Books</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <h1>All Books</h1>
+        <hr>
+
+        <table border="3" style="width: 70%;" class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Book Id</th>
+                    <th>Book Name</th>
+                    <th>Book Price</th>
+                    <th>Book Quantity</th>
+                    <th>Book Is_Active</th>
+                    <th>Book Is_InActive</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            {% for book in books %}
+            
+            <tr>
+                <td>{{book.id}}</td>
+                <td>{{book.name}}</td>
+                <td>{{book.price}}</td>
+                <td>{{book.quantity}}</td>
+                <td>{{book.is_active}}</td>
+                <td>{{book.is_inactive}}</td>
+                <td>
+                    <form action="{% url 'edit' book.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Edit" class="btn btn-primary">
+                    </form>
+
+                    <form action="{% url 'soft_delete' book.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Soft Delete" class="btn btn-warning">
+                    </form>
+
+                    <form action="{% url 'delete' book.id %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Hard Delete" class="btn btn-danger">
+                    </form>
+                </td>
+            </tr>
+            
+            {% endfor %}
+
+        </table>
+
+        <a href="{% url 'homepage' %}">Home</a><br>
+        <a href="{% url 'show_soft_deleted_books' %}">Show Soft Deleted Books</a>
+        
+    </body>
+</html>
