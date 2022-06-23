@@ -28,10 +28,7 @@ urlpatterns = [
     path('soft-delete_all/', views.soft_delete_all, name="soft_delete_all"),
     path('show-soft-deleted-books/', views.show_soft_deleted_books, name="show_soft_deleted_books"),
     path('restore/<int:id>', views.restore_data, name="restore"),
-
-
-
-
-
+    path('prod-video/', views.product_video, name="product_video"),
+    path('user-login/', views.user_login, name="user_login"),
 
 ]
