@@ -212,3 +212,7 @@ def restore_data(request,id):
         return redirect("show_all_books")
 
 # --------------------------------------------------------------------------------------------------------------------------------
+
+def product_video(request):
+    print("In product video")
+    return HttpResponse("Here you can see product video")
