@@ -19,7 +19,8 @@ class Book(models.Model):
     active_objects = ActiveBookManager()
     inactive_objects = InActiveBookManager()
     objects = models.Manager()
-
+# Here, we wont require is_inactive, bcoz if is_active == N that means the book is inactive.
+#default is "Y" bcoz while adding the book will be active later on we can make it to "N" to show it is inactive.
     
     class Meta:
         db_table = "book"
