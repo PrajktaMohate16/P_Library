@@ -6,7 +6,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.models import User
 
 # Create your views here.
-
+# view willalways take request as an argument
 def homepage(request):              # request -- HttpRequest ---contains meta data --default argument
 
     """Return home page of web application"""
